@@ -27,7 +27,8 @@ const Modal = ({ onClose, children }: ModalProps) => {
         <button
           onClick={onClose}
           onTouchStart={onClose}
-          className="absolute cursor-pointer min-w-12 min-h-12 top-0 right-0 text-white text-xl p-1"
+          className="absolute z-75 cursor-pointer min-w-12 min-h-12 top-2 right-2 text-white text-xl p-1"
+          aria-label="Close"
         >
           ✖
         </button>
