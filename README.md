@@ -4,7 +4,7 @@ This project is a responsive, React-based movie application that connects to the
 
 This is a **demo project** created as part of my personal development portfolio to reinforce key React, TypeScript, and API integration concepts.
 
-🔗 [Live Site] Coming soon...
+🔗 [Live Site](https://react-typescript-movie-app.onrender.com)
 
 ---
 
