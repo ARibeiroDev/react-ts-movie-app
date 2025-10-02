@@ -44,12 +44,10 @@ export const getMovieTrailer = async (
   imdbId: string
 ): Promise<string | null> => {
   try {
-    const response = await imdbApi.get(`/media/${imdbId}`, {
-      responseType: "blob",
-    });
+    const response = await imdbApi.get(`/media/${imdbId}`);
 
-    const blob = response.data;
-    return URL.createObjectURL(blob);
+    const url = response.request.responseURL;
+    return url;
   } catch (error) {
     console.error("Error fetching trailer:", error);
     return null;
