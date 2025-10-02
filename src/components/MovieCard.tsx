@@ -40,7 +40,10 @@ const MovieCard = ({ movie }: MovieCardProps) => {
 
   return (
     <>
-      <article className="relative rounded-lg overflow-hidden bg-[#1a1a1a] transition-all duration-300 flex flex-col h-full group">
+      <article
+        className="relative rounded-lg overflow-hidden bg-[#1a1a1a] transition-all duration-300 flex flex-col h-full group"
+        tabIndex={0}
+      >
         <figure className="relative w-full transition-all duration-300 ease-in-out aspect-[2/3]">
           <figcaption className="sr-only">Movie Poster</figcaption>
 
@@ -49,15 +52,15 @@ const MovieCard = ({ movie }: MovieCardProps) => {
             src={movie.image}
             alt={`Poster not available for ${movie.title}`}
           />
-
-          <div className="absolute top-0 left-0 right-0 bottom-0 pointer-events-none bg-linear-to-b from-[rgba(0,0,0,0.1)] to-[rgba(0,0,0,0.8)] opacity-0 transition-opacity duration-200 flex flex-col justify-end p-4 group-hover:opacity-100">
-            <button
-              className="absolute pointer-events-auto cursor-pointer top-4 right-4 text-white text-2xl p-2 bg-gray-950 rounded-full w-12 h-12 flex items-center justify-center transition-colors duration-200 hover:bg-gray-900 active:bg-[#ff4757]"
-              onClick={toggleFavorite}
-            >
-              {favorite ? "❤️" : "🤍"}
-            </button>
-          </div>
+          <button
+            className="absolute pointer-events-auto cursor-pointer top-4 right-4 text-white text-xl bg-gray-950/50 rounded-full w-12 h-12 flex items-center justify-center transition-colors duration-200 hover:bg-gray-900 active:bg-[#ff4757]"
+            onClick={toggleFavorite}
+            aria-pressed={favorite}
+            aria-label={favorite ? "Remove from favorites" : "Add to favorites"}
+          >
+            {favorite ? "❤️" : "🤍"}
+          </button>
+          <div className="absolute top-0 left-0 right-0 bottom-0 pointer-events-none bg-linear-to-b from-[rgba(0,0,0,0.1)] to-[rgba(0,0,0,0.8)] opacity-0 transition-opacity duration-200 flex flex-col justify-end p-4 group-hover:opacity-100 group-focus-within:opacity-100"></div>
         </figure>
         <section
           className="p-4 flex-1 flex flex-col gap-2"
@@ -86,6 +89,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
               src={trailerUrl}
               controls
               autoPlay
+              playsInline
               className="w-full h-auto aspect-video"
             />
           ) : (
